@@ -4,12 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Track Your Order</title>
-  <link rel="icon" type="image/png" href="cpn.png" />
+  <link rel="icon" href="assets/cpn.png" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#ff69b4" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="main-wrapper">
@@ -25,15 +22,14 @@
         <option value="Date">📅 Date</option>
       </select>
       <input type="text" id="searchInput" />
-      <input type="date" id="dateInput" style="display:none;" />
-      <select id="courierDropdown" style="display:none;"></select>
+      <input type="date" id="dateInput" style="display:none" />
+      <select id="courierDropdown" style="display:none"></select>
       <button class="search-btn" onclick="filterResults()">Search</button>
     </div>
 
     <div class="loading">⏳ Loading...</div>
-    <p id="resultsCount"></p>
-
     <div class="table-wrapper">
+      <p id="resultsCount"></p>
       <table>
         <thead id="tableHead">
           <tr>
@@ -65,12 +61,15 @@
     <p id="copyright">© Cute Printed Nightwears by Radhika ❤️</p>
   </div>
 
+  <!-- JS Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/courier.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- WhatsApp Button -->
   <a href="https://wa.me/918307358952?text=Hi%20Team,%20I%20need%20help%20tracking%20my%20order." target="_blank" class="floating-whatsapp" title="Chat with us on WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
   </a>
-
-  <script src="js/helpers.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
 </body>
 </html>
