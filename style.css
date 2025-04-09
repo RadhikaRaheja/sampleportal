@@ -1,0 +1,265 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('assets/bgimage.jpg'), linear-gradient(135deg, #eacdfc, #f6e8ff);
+  background-blend-mode: overlay;
+  background-size: cover;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.main-wrapper {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.logo {
+  width: 130px;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+h2 {
+  margin: 20px 0;
+}
+
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+input, select, button {
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-width: 150px;
+}
+
+.search-btn {
+  background: #ff69b4;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #e60073;
+}
+
+.loading {
+  display: none;
+  text-align: center;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 95%;
+  margin: auto;
+  border-collapse: collapse;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  min-width: 600px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #888;
+  background-color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  text-align: center;
+}
+
+th {
+  background: #ff69b4;
+  color: white;
+  font-weight: 600;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  background-color: #ff69b4;
+  color: white;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.pagination button:hover {
+  background-color: #e60073;
+}
+
+.pagination input {
+  width: 40px;
+  height: 34px;
+  font-size: 14px;
+  border-radius: 6px;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 4px;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: left;
+  width: 420px;
+  max-width: 90%;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.popup-content p {
+  margin: 5px 0;
+}
+
+.popup-content p b {
+  color: #333;
+  font-weight: 600;
+}
+
+.popup a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.popup a:hover {
+  text-decoration: underline;
+}
+
+.close-btn {
+  display: block;
+  margin: 15px auto 0;
+  padding: 8px 15px;
+  background: #ff69b4;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.close-btn:hover {
+  background: #ff4081;
+}
+
+#copyright {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: 0.2s ease;
+}
+
+.floating-whatsapp img {
+  width: 26px;
+  height: 26px;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+  background-color: #1ebe5d;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile Fixes */
+@media screen and (max-width: 768px) {
+  .main-wrapper {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-bar input,
+  .search-bar select,
+  .search-bar button {
+    width: 90%;
+    max-width: 300px;
+    box-sizing: border-box;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .popup {
+    width: 90%;
+    padding: 20px;
+    font-size: 14px;
+  }
+}
