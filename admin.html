@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Order Dashboard</title>
+  <link rel="icon" type="image/png" href="cpn.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="main-wrapper">
+    <img src="cpn.png" class="logo" alt="Logo" />
+    <h2>🔐 Admin Dashboard</h2>
+
+    <div class="search-bar">
+      <label for="searchField">🔍 Search by:</label>
+      <select id="searchField" onchange="handleSearchFieldChange()">
+        <option value="Customer Name">👤 Name</option>
+        <option value="Location (Pincode)">📍 Pincode</option>
+        <option value="Tracking ID">🔢 Tracking Code</option>
+        <option value="Date">📅 Date</option>
+      </select>
+      <input type="text" id="searchInput" />
+      <input type="date" id="dateInput" style="display:none;" />
+      <select id="courierDropdown" style="display:none;"></select>
+      <button class="search-btn" onclick="filterResults()">Search</button>
+
+      <!-- Admin filters -->
+      <label>📅 Month: <input type="month" id="adminMonth" /></label>
+      <label>🗓️ Week: <input type="week" id="adminWeek" /></label>
+      <label>📆 Year: <input type="number" id="adminYear" min="2020" /></label>
+      <label>🔎 Vendor: <input type="text" id="vendorFilter" /></label>
+      <label>🔎 Reseller: <input type="text" id="resellerFilter" /></label>
+      <button class="search-btn" onclick="applyAdminFilters()">Apply</button>
+    </div>
+
+    <div class="loading">⏳ Loading...</div>
+    <p id="resultsCount"></p>
+
+    <div class="table-wrapper">
+      <table>
+        <thead id="tableHead">
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Pincode</th>
+            <th>Courier</th>
+            <th>Tracking ID</th>
+            <th>Category</th>
+            <th>Vendor</th>
+            <th>Reseller</th>
+          </tr>
+        </thead>
+        <tbody id="resultsTable"></tbody>
+      </table>
+    </div>
+
+    <div class="pagination">
+      <button onclick="prevPage()">⬅️</button>
+      <span>Page <input type="number" id="pageNumber" min="1" onchange="jumpToPage()" /> of <span id="totalPages"></span></span>
+      <button onclick="nextPage()">➡️</button>
+    </div>
+
+    <div class="popup-overlay" id="popupOverlay">
+      <div class="popup">
+        <button class="close-btn" onclick="hidePopup()">Close</button>
+        <div id="popupContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/helpers.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
