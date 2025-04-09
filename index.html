@@ -2,50 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Portal – Order & Wallet Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – CPN Orders</title>
+  <link rel="icon" href="assets/cpn.png" />
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="manifest" href="manifest.json" />
 <meta name="theme-color" content="#ff69b4" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <img src="assets/cpn.png" alt="Logo" class="logo" />
-      <h1>Admin Portal – Order & Wallet Management</h1>
-    </header>
+  <div class="main-wrapper">
+    <img src="assets/cpn.png" class="logo" />
+    <h2>🔐 Admin Dashboard – Orders & Wallet</h2>
 
     <div class="tab-buttons">
-      <button class="tab-btn active" data-tab="sales">🧾 Daily Sales</button>
-      <button class="tab-btn" data-tab="wallet">💰 Vendor Wallet</button>
+      <button class="tab-btn active" data-tab="sales">📦 Orders</button>
+      <button class="tab-btn" data-tab="wallet">💰 Wallet</button>
     </div>
 
-    <div class="tab-content active" id="sales-tab">
+    <!-- ✅ Filters -->
+    <div class="filters">
+      <label>From: <input type="date" id="fromDate" /></label>
+      <label>To: <input type="date" id="toDate" /></label>
+      <label>Vendor: <input type="text" id="filterVendor" /></label>
+      <label>Reseller: <input type="text" id="filterReseller" /></label>
+      <label><input type="checkbox" id="filterBlanks" /> Show Missing Entries</label>
+      <button class="search-btn" onclick="applyFilters()">Apply Filters</button>
+      <button class="clear-btn" onclick="clearFilters()">Reset</button>
+    </div>
+
+    <!-- ✅ Results Count -->
+    <div id="resultsCount"></div>
+
+    <!-- ✅ Sales Tab -->
+    <div id="sales-tab" class="tab-content active">
       <div class="table-wrapper">
         <table id="sales-table">
           <thead>
             <tr>
               <th>Date</th>
-              <th>Customer Name</th>
+              <th>Customer</th>
               <th>Pincode</th>
-              <th>Vendor Name</th>
-              <th>Amount Received</th>
-              <th>Amount Paid</th>
+              <th>Vendor</th>
+              <th>Amt Received</th>
+              <th>Amt Paid</th>
               <th>Reseller</th>
               <th>Courier</th>
-              <th>Tracking ID</th>
+              <th>Tracking</th>
             </tr>
           </thead>
-          <tbody>
-            <!-- Sales data rows inserted here -->
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </div>
 
-    <div class="tab-content" id="wallet-tab">
+    <!-- ✅ Wallet Tab -->
+    <div id="wallet-tab" class="tab-content">
       <div class="table-wrapper">
         <table id="wallet-table">
           <thead>
@@ -55,19 +69,15 @@
               <th>Amount</th>
             </tr>
           </thead>
-          <tbody>
-            <!-- Wallet data rows inserted here -->
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </div>
 
-    <footer>
-      <p>© Admin – Cute Printed Nightwears by Radhika ❤️</p>
-    </footer>
+    <div id="toast" class="toast"></div>
+    <p id="copyright">© Cute Printed Nightwears by Radhika ❤️</p>
   </div>
 
-  <div id="toast"></div>
-  <script src="admin.js"></script>
+  <script src="js/admin.js"></script>
 </body>
 </html>
