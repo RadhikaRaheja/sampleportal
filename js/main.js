@@ -1,12 +1,11 @@
 let data = [], filteredData = [], couriers = {}, currentPage = 1, entriesPerPage = 10;
 
-// Fetch Google Sheet Data
+// Fetch Google Sheet Data (last 3 months)
 async function fetchData() {
   document.querySelector('.loading').style.display = 'block';
   const res = await fetch('https://opensheet.elk.sh/1UMul8nt25GR8MUM-_EdwAR0q6Ne2ovPv_R-m1-CHeXw/Daily%20Sales%20record');
   const result = await res.json();
 
-  // For user mode, only last 3 months
   const threeMonthsAgo = new Date();
   threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
   data = result.filter(row => new Date(row.Date) >= threeMonthsAgo);
@@ -30,15 +29,20 @@ async function loadCouriers() {
 }
 
 function filterResults() {
-  let field = document.getElementById('searchField').value;
+  const field = document.getElementById('searchField').value;
   let query = '';
-  if (field === 'Date') query = formatDate(document.getElementById('dateInput').value);
-  else if (field === 'Courier Name') query = document.getElementById('courierDropdown').value;
-  else query = document.getElementById('searchInput').value.toLowerCase();
+
+  if (field === 'Date') {
+    query = formatDate(document.getElementById('dateInput').value);
+  } else if (field === 'Courier Name') {
+    query = document.getElementById('courierDropdown').value;
+  } else {
+    query = document.getElementById('searchInput').value.toLowerCase();
+  }
 
   filteredData = data.filter(row => {
     if (!row[field]) return false;
-    let value = field === 'Date' ? formatDate(row[field]) : row[field].toLowerCase();
+    const value = field === 'Date' ? formatDate(row[field]) : row[field].toLowerCase();
     return value.includes(query);
   });
 
@@ -75,6 +79,7 @@ function renderResults() {
       <td>${row["Tracking ID"]}</td>
       <td>${row["Category"] || ''}</td>
     `;
+
     tr.onclick = () => renderPopup(row);
     table.appendChild(tr);
   });
@@ -82,6 +87,6 @@ function renderResults() {
   renderPaginationControls();
 }
 
-// Init
+// Init on load
 fetchData();
 loadCouriers();
