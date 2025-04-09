@@ -1,62 +1,104 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Outfit', sans-serif;
   background: url('assets/bgimage.jpg'), linear-gradient(135deg, #eacdfc, #f6e8ff);
-  background-size: cover;
   background-blend-mode: overlay;
-  color: #333;
+  background-size: cover;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
-.container {
+.main-wrapper {
   max-width: 1100px;
   margin: 40px auto;
   padding: 20px;
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(6px);
   border-radius: 15px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.1);
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(6px);
 }
 
 .logo {
-  width: 110px;
-  margin: 0 auto;
+  width: 120px;
   display: block;
+  margin: 0 auto;
   border-radius: 12px;
 }
 
-header h1 {
+h2 {
   text-align: center;
-  font-size: 24px;
-  margin: 15px 0 25px;
+  margin: 20px 0;
 }
 
 .tab-buttons {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
 }
 
 .tab-btn {
   padding: 10px 20px;
-  margin: 0 10px;
-  border: none;
-  border-radius: 8px;
   background-color: #ff69b4;
   color: white;
-  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
-.tab-btn.active {
+.tab-btn.active,
+.tab-btn:hover {
   background-color: #e60073;
 }
 
-.tab-content {
-  display: none;
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0;
 }
 
-.tab-content.active {
-  display: block;
+.filters label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.filters input[type="text"],
+.filters input[type="date"],
+.filters input[type="week"],
+.filters input[type="number"] {
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.search-btn,
+.clear-btn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: #ff69b4;
+  color: white;
+}
+
+.clear-btn {
+  background-color: #aaa;
+}
+
+.search-btn:hover {
+  background-color: #e60073;
+}
+.clear-btn:hover {
+  background-color: #888;
 }
 
 .table-wrapper {
@@ -65,59 +107,95 @@ header h1 {
 
 table {
   width: 100%;
+  margin-top: 10px;
   border-collapse: collapse;
   font-size: 14px;
-  margin-bottom: 20px;
-  background-color: white;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 th, td {
   padding: 10px;
-  border: 1px solid #ccc;
   text-align: center;
-  min-width: 100px;
+  border: 1px solid #ddd;
 }
 
 th {
-  background-color: #ff69b4;
+  background: #ff69b4;
   color: white;
+  font-weight: bold;
 }
 
-td input,
-td select {
+td input, td select {
   width: 100%;
   padding: 6px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 4px;
+  font-family: inherit;
   font-size: 13px;
+  box-sizing: border-box;
 }
 
-footer {
+#resultsCount {
+  margin: 10px 0;
+  font-size: 15px;
   text-align: center;
-  font-size: 13px;
-  color: #666;
+  font-weight: 600;
 }
 
-#toast {
+.toast {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
   background: #333;
-  color: #fff;
-  padding: 12px 20px;
+  color: white;
+  padding: 10px 20px;
   border-radius: 8px;
   display: none;
-  z-index: 1000;
   font-size: 14px;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+#copyright {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+/* Responsive */
 @media screen and (max-width: 768px) {
-  .container {
-    margin: 10px;
-    padding: 15px;
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters label {
+    width: 90%;
+    justify-content: space-between;
   }
 
   table {
     font-size: 12px;
+  }
+
+  td input, td select {
+    font-size: 12px;
+  }
+
+  .tab-buttons {
+    flex-direction: column;
+  }
+
+  .tab-btn {
+    width: 90%;
+  }
+
+  .logo {
+    width: 90px;
   }
 }
