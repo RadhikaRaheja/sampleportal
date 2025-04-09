@@ -3,41 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin - Order Dashboard</title>
-  <link rel="icon" type="image/png" href="cpn.png" />
+  <title>Admin – Track Orders</title>
+  <link rel="icon" href="assets/cpn.png" />
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="main-wrapper">
-   <img src="assets/cpn.png" alt="Cute Printed Nightwears Logo" class="logo">
-    <h2>🔐 Admin Dashboard</h2>
+    <img src="assets/cpn.png" alt="Logo" class="logo">
+    <h2>🔐 Admin Mode – Order Management</h2>
 
     <div class="search-bar">
-      <label for="searchField">🔍 Search by:</label>
-      <select id="searchField" onchange="handleSearchFieldChange()">
-        <option value="Customer Name">👤 Name</option>
-        <option value="Location (Pincode)">📍 Pincode</option>
-        <option value="Tracking ID">🔢 Tracking Code</option>
-        <option value="Date">📅 Date</option>
-      </select>
-      <input type="text" id="searchInput" />
-      <input type="date" id="dateInput" style="display:none;" />
-      <select id="courierDropdown" style="display:none;"></select>
-      <button class="search-btn" onclick="filterResults()">Search</button>
-
-      <!-- Admin filters -->
       <label>📅 Month: <input type="month" id="adminMonth" /></label>
       <label>🗓️ Week: <input type="week" id="adminWeek" /></label>
-      <label>📆 Year: <input type="number" id="adminYear" min="2020" /></label>
+      <label>📆 Year: <input type="number" id="adminYear" min="2020" max="2099" /></label>
       <label>🔎 Vendor: <input type="text" id="vendorFilter" /></label>
-      <label>🔎 Reseller: <input type="text" id="resellerFilter" /></label>
+      <label>👤 Reseller: <input type="text" id="resellerFilter" /></label>
       <button class="search-btn" onclick="applyAdminFilters()">Apply</button>
     </div>
 
     <div class="loading">⏳ Loading...</div>
-    <p id="resultsCount"></p>
-
     <div class="table-wrapper">
+      <p id="resultsCount"></p>
       <table>
         <thead id="tableHead">
           <tr>
@@ -67,11 +54,17 @@
         <div id="popupContent"></div>
       </div>
     </div>
+
+    <p id="copyright">© Admin – Cute Printed Nightwears by Radhika ❤️</p>
   </div>
 
-  <script src="js/helpers.js"></script>
+  <!-- JS Modules -->
+  <script>
+    const isAdmin = true;
+  </script>
+  <script src="js/data.js"></script>
   <script src="js/ui.js"></script>
+  <script src="js/courier.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/admin.js"></script>
 </body>
 </html>
