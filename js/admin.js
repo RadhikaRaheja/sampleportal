@@ -1,4 +1,4 @@
-// Override default fetch behavior for admin (no 3-month filter)
+// Fetch full data without date filtering
 async function fetchData() {
   document.querySelector('.loading').style.display = 'block';
   const res = await fetch('https://opensheet.elk.sh/1UMul8nt25GR8MUM-_EdwAR0q6Ne2ovPv_R-m1-CHeXw/Daily%20Sales%20record');
@@ -78,7 +78,7 @@ function applyAdminFilters() {
 
     if (reseller) {
       const val = row["Reseller having wallet"] || row["Reseller Name"] || "";
-      match = match && (val.toLowerCase().includes(reseller));
+      match = match && val.toLowerCase().includes(reseller);
     }
 
     return match;
