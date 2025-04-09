@@ -1,11 +1,12 @@
 {
-  "name": "CPN Admin Portal",
-  "short_name": "CPN Admin",
+  "name": "Admin Dashboard – Cute Printed Nightwears",
+  "short_name": "Admin CPN",
   "start_url": "admin.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ff69b4",
-  "description": "Admin panel for managing orders, vendors, and wallet records at Cute Printed Nightwears by Radhika.",
+  "orientation": "portrait",
+  "description": "Admin Lite Panel to manage orders and vendor records for Cute Printed Nightwears.",
   "icons": [
     {
       "src": "assets/cpn.png",
