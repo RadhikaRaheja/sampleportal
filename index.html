@@ -2,78 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Track Your Order</title>
-  <link rel="icon" href="assets/cpn.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Portal – Order & Wallet Management</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="main-wrapper">
-    <img src="assets/cpn.png" alt="Cute Printed Nightwears Logo" class="logo">
-    <h2>📦 Track Your Order</h2>
+  <div class="container">
+    <header>
+      <img src="assets/logo.png" alt="Logo" class="logo" />
+      <h1>Admin Portal – Order & Wallet Management</h1>
+    </header>
 
-    <div class="search-bar">
-      <label for="searchField">🔍 Search by:</label>
-      <select id="searchField" onchange="handleSearchFieldChange()">
-        <option value="Customer Name">👤 Name</option>
-        <option value="Location (Pincode)">📍 Pincode</option>
-        <option value="Tracking ID">🔢 Tracking Code</option>
-        <option value="Date">📅 Date</option>
-      </select>
-      <input type="text" id="searchInput" />
-      <input type="date" id="dateInput" style="display:none" />
-      <select id="courierDropdown" style="display:none"></select>
-      <button class="search-btn" onclick="filterResults()">Search</button>
+    <div class="tab-buttons">
+      <button class="tab-btn active" data-tab="sales">🧾 Daily Sales</button>
+      <button class="tab-btn" data-tab="wallet">💰 Vendor Wallet</button>
     </div>
 
-    <div class="loading">⏳ Loading...</div>
-    <div class="table-wrapper">
-      <p id="resultsCount"></p>
-      <table>
-        <thead id="tableHead">
-          <tr>
-            <th>Date</th>
-            <th>Name</th>
-            <th>Pincode</th>
-            <th>Courier</th>
-            <th>Tracking ID</th>
-            <th>Category</th>
-          </tr>
-        </thead>
-        <tbody id="resultsTable"></tbody>
-      </table>
-    </div>
-
-    <div class="pagination">
-      <button onclick="prevPage()">⬅️</button>
-      <span>Page <input type="number" id="pageNumber" min="1" onchange="jumpToPage()" /> of <span id="totalPages"></span></span>
-      <button onclick="nextPage()">➡️</button>
-    </div>
-
-    <div class="popup-overlay" id="popupOverlay">
-      <div class="popup">
-        <button class="close-btn" onclick="hidePopup()">Close</button>
-        <div id="popupContent"></div>
+    <div class="tab-content active" id="sales-tab">
+      <div class="table-wrapper">
+        <table id="sales-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Customer Name</th>
+              <th>Pincode</th>
+              <th>Vendor Name</th>
+              <th>Amount Received</th>
+              <th>Amount Paid</th>
+              <th>Reseller</th>
+              <th>Courier</th>
+              <th>Tracking ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Sales data rows inserted here -->
+          </tbody>
+        </table>
       </div>
     </div>
 
-    <!-- Admin Mode Link -->
-    <div style="text-align:center; margin: 30px 0;">
-      <a href="admin.html" style="font-size: 14px; color: #ff69b4; text-decoration: none; font-weight: 600;">🔐 Admin Login</a>
+    <div class="tab-content" id="wallet-tab">
+      <div class="table-wrapper">
+        <table id="wallet-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Vendor/Reseller</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Wallet data rows inserted here -->
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <p id="copyright">© Cute Printed Nightwears by Radhika ❤️</p>
+    <footer>
+      <p>© Admin – Cute Printed Nightwears by Radhika ❤️</p>
+    </footer>
   </div>
 
-  <!-- JS Modules -->
-  <script src="js/helpers.js"></script>
-  <script src="js/ui.js"></script>
-  <script src="js/main.js"></script>
-
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/918307358952?text=Hi%20Team,%20I%20need%20help%20tracking%20my%20order." target="_blank" class="floating-whatsapp" title="Chat with us on WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-  </a>
+  <div id="toast"></div>
+  <script src="admin.js"></script>
 </body>
 </html>
