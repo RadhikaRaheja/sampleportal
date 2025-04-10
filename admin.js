@@ -46,6 +46,16 @@ function renderSalesTable(data) {
   tbody.innerHTML = "";
   document.getElementById("resultsCount").textContent = `📦 Showing ${data.length} orders`;
 
+  function formatDate(input) {
+  const date = new Date(input);
+  if (isNaN(date.getTime())) return ''; // Fallback for invalid/missing
+  return date.toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  }).replace(/ /g, '-');
+}
+
   data.forEach((row, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
