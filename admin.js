@@ -65,7 +65,7 @@ function renderSalesTable(data) {
       ${dropdown(row["Vendor Name"], index, 'Vendor Name')}
       ${cell(row["Amount Received from Customer"], index, 'Amount Received from Customer', 'number')}
       ${cell(row["Amount Paid to Vendor"], index, 'Amount Paid to Vendor', 'number')}
-      ${dropdown(row["Reseller having wallet"], index, 'Reseller having wallet')}
+      ${dropdown(row["Reseller Name"], index, 'Reseller Name')}
       ${cell(row["Courier Name"], index, 'Courier Name')}
       ${cell(row["Tracking ID"], index, 'Tracking ID')}
     `;
@@ -139,10 +139,10 @@ function applyFilters() {
     if (!isNaN(from)) match = match && d >= from;
     if (!isNaN(to)) match = match && d <= to;
     if (vendor) match = match && (row["Vendor Name"] || '').toLowerCase().includes(vendor);
-    if (reseller) match = match && (row["Reseller having wallet"] || '').toLowerCase().includes(reseller);
+    if (reseller) match = match && (row["Reseller Name"] || '').toLowerCase().includes(reseller);
     if (blanks) {
       match = match &&
-        (!row["Tracking ID"] || !row["Courier Name"] || !row["Reseller having wallet"]);
+        (!row["Tracking ID"] || !row["Courier Name"] || !row["Reseller Name"]);
     }
     return match;
   });
