@@ -150,6 +150,27 @@ function applyFilters() {
   renderSalesTable(filtered);
 }
 
+function updateCell(sheet, rowIndex, columnName, newValue) {
+  fetch('https://script.google.com/macros/s/AKfycbyxN6fXtkLd5o6LpInKf5DH5GqguhmnFoC8GvzISglwVZ7_m4rggYeXXjFCK9Wh8uQtTg/exec', {
+    method: 'POST',
+    body: JSON.stringify({
+      sheetName: sheet,
+      row: rowIndex + 2, // +2 because 0-based + header
+      column: columnName,
+      value: newValue
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.success) showToast("✅ Updated");
+    else showToast("⚠️ Update failed");
+  })
+  .catch(() => showToast("❌ Error updating"));
+}
+
 function clearFilters() {
   document.getElementById("fromDate").value = "";
   document.getElementById("toDate").value = "";
